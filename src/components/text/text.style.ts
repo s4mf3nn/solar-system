@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-export const Text = styled.text<{ color: string; ellipsis: boolean; bold: boolean; }>`
+export const Text = styled.text<{ color: string; ellipsis?: boolean; bold: boolean; }>`
   color: ${p => p.color};
-  font-family: 'Poppins', sans-serif;
   font-size: .8rem;
   font-weight: ${p => p.bold ? '700' : '400'};
   opacity: .85;

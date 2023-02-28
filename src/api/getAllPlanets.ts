@@ -17,7 +17,7 @@ export const getAllPlanets = async (): Promise<IGetAllPlanetsDataQuery[] | undef
       planetsData.push({
         id: planet.id,
         name: planet.englishName,
-        description: "Lorem ipsum",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum.",
         // description: description,
       });
     }));

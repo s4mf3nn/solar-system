@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import { Card, Heading, Search, Text } from '@/components';
 import GlobalStyle from '@/styles/globalStyles';
-import * as sc from './style';
+import { bodyPrimaryColor } from '@/styles/bodyColors.constant';
+import * as sc from './index.style';
 
 import { getAllPlanets } from '@/api/getAllPlanets';
 import { ISolarSystemProps, IGetAllPlanetsDataQuery, IGetStaticSolarSystemProps } from '@/interfaces/common.interface';
@@ -18,13 +19,23 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
       </Head>
       <GlobalStyle />
       <sc.Wrapper>
-        {data.map((planet: any) => (
-          <Link href={`/planets/${planet.id}`} key={planet.id}>
-            <h2 >{planet.name}</h2>
-            <p>{planet.description}</p>
-            <div>See more</div>
-          </Link>
-        ))}
+        <Text color="#fff" bold={true}>Solar System</Text>
+        <Heading color="#fff" type="h1">Explore</Heading>
+        <sc.Spacer size="2.5rem" />
+        <Search placeholder="Search for a planet" />
+        <sc.Spacer size="2.5rem" />
+        <sc.Layout>
+          {data.map((planet, i) => (
+            <sc.CardContainer key={i}>
+              <Card
+                id={planet.id}
+                name={planet.name}
+                description={planet.description}
+                planetColor={bodyPrimaryColor[planet.id]}
+              />
+            </sc.CardContainer>
+          ))}
+        </sc.Layout>
       </sc.Wrapper>
     </>
   );

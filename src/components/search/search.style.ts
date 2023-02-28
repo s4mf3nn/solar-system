@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Icon = styled(SearchIcon)`
   color: #fff;
   position: absolute;
-  top: 25px;
+  margin-top: 4px;
 `;
 
 export const Search = styled.input`
@@ -12,7 +12,6 @@ export const Search = styled.input`
   border: none;
   border-bottom: 1px solid #fff;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   outline: none;
   padding: 8px 0 8px 32px;

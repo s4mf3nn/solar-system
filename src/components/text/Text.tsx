@@ -4,7 +4,7 @@ import * as sc from './text.style';
 interface TextProps {
   color: string;
   bold: boolean;
-  ellipsis: boolean;
+  ellipsis?: boolean;
   children: string;
 }
 

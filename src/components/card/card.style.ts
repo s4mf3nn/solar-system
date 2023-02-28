@@ -20,6 +20,8 @@ export const PlanetIcon = styled.div`
 export const Spacer = styled.div<{ size: string; }>`
   height: ${p => p.size};
 `;
+
 export const Divider = styled.div<{ color: string; }>`
   border-top: 1px solid ${p => p.color};
+  opacity: .4;
 `;
