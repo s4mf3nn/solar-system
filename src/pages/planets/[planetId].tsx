@@ -2,7 +2,7 @@ import Head from 'next/head';
 import * as sc from './style';
 
 import { getPlanet } from '@/api/getPlanet';
-import { IGetPlanetDataQuery, IGetServerSidePlanetsProps, IPlanetData, IQuery } from '@/interfaces/commons.interface';
+import { IGetPlanetDataQuery, IGetServerSidePlanetsProps, IPlanetData, IQuery } from '@/interfaces/common.interface';
 import Link from 'next/link';
 
 export default function Planets({ data }: IPlanetData) {

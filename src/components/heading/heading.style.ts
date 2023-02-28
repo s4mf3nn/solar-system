@@ -15,3 +15,11 @@ export const Heading2 = styled.h2<{ color: string; }>`
   font-weight: 700;
   margin: 0;
 `;
+
+export const Heading3 = styled.h3<{ color: string; }>`
+  color: ${p => p.color};
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+`;

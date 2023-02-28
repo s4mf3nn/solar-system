@@ -4,7 +4,7 @@ import GlobalStyle from '@/styles/globalStyles';
 import * as sc from './style';
 
 import { getAllPlanets } from '@/api/getAllPlanets';
-import { ISolarSystemProps, IGetAllPlanetsDataQuery, IGetStaticSolarSystemProps } from '@/interfaces/commons.interface';
+import { ISolarSystemProps, IGetAllPlanetsDataQuery, IGetStaticSolarSystemProps } from '@/interfaces/common.interface';
 
 export default function SolarSystem({ data }: ISolarSystemProps) {
 

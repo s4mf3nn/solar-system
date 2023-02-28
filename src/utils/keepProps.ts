@@ -1,4 +1,4 @@
-import { IPlanetProps, IMoonsProps } from '@/interfaces/commons.interface';
+import { IPlanetProps, IMoonsProps } from '@/interfaces/common.interface';
 
 /**
  * Return a smaller object that contains planet props

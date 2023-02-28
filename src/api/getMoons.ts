@@ -1,5 +1,5 @@
 import { keepMoonsProps } from "@/utils/keepProps";
-import { IGetMoonsDataQuery } from '@/interfaces/commons.interface';
+import { IGetMoonsDataQuery } from '@/interfaces/common.interface';
 
 /**
  * Get moons data of a specific planet by ID

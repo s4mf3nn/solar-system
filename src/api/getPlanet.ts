@@ -1,4 +1,4 @@
-import { IPlanetData, IGetPlanetDataQuery } from "@/interfaces/commons.interface";
+import { IPlanetData, IGetPlanetDataQuery } from "@/interfaces/common.interface";
 import { keepPlanetProps } from '@/utils/keepProps';
 
 /**

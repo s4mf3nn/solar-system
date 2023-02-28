@@ -21,3 +21,10 @@ Heading2.args = {
   color: '#fff',
   children: 'Jupiter',
 };
+
+export const Heading3 = Template.bind({});
+Heading3.args = {
+  type: 'h3',
+  color: '#fff',
+  children: '227,939,200 km',
+};

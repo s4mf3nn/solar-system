@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { getMoons } from '@/api/getMoons';
 import * as sc from './style';
-import { IGetServerSideMoonsProps, IMoonsProps } from '@/interfaces/commons.interface';
+import { IGetServerSideMoonsProps, IMoonsProps } from '@/interfaces/common.interface';
 
 export default function Moons({ data, planetId }: any) {
 

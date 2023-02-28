@@ -1,5 +1,5 @@
 import { generateDescription } from "./generateDescription";
-import { IPlanetsData, IGetAllPlanetsDataQuery } from '@/interfaces/commons.interface';
+import { IPlanetsData, IGetAllPlanetsDataQuery } from '@/interfaces/common.interface';
 
 /**
  * Get data of a all Solar System planets
