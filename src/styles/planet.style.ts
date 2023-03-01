@@ -37,3 +37,15 @@ export const InfoContainer = styled.div`
     width: 45%;
   }
 `;
+
+export const MoonContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+`;
+export const Moon = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: ${p => p.color};
+`;

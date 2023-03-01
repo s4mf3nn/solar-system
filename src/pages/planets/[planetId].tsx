@@ -43,8 +43,9 @@ export default function Planets({ data }: IPlanetData) {
 
   /**
    * Go to the previous page
+   * Back method has been replaced to prevent a bug
    */
-  const handleClick = () => router.back();;
+  const handleClick = () => router.push("/");
 
   return (
     <>
@@ -67,6 +68,14 @@ export default function Planets({ data }: IPlanetData) {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum.
         </Text>
         <sc.Spacer size="2rem" />
+        {data.moons &&
+          <>
+            <sc.MoonContainer>
+              {data.moons.map(() => <sc.Moon color={color} />)}
+            </sc.MoonContainer>
+            <sc.Spacer size="1.5rem" />
+          </>
+        }
         {data.moons &&
           <Link href={`/planets/${data.id}/moons`}>
             <Button color={color} label={data.moons.length > 1
