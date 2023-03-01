@@ -5,13 +5,13 @@ import { bodyPrimaryColor } from '@/styles/constants/bodyColors.constant';
 import * as sc from '@/styles/index.style';
 
 import { getAllPlanets } from '@/api/getAllPlanets';
-import { ISolarSystemProps, IGetAllPlanetsDataQuery, IGetStaticSolarSystemProps } from '@/interfaces/common.interface';
+import { ISolarSystemProps, IGetAllPlanetsDataQuery, IGetStaticSolarSystemProps, IDescriptionList } from '@/interfaces/common.interface';
 import { useStore } from '@/store';
 
 export default function SolarSystem({ data }: ISolarSystemProps) {
   const [state, setState] = useState(data);
   const [searchValue, setSearchValue] = useState("");
-  const { changeBackgroundColor } = useStore();
+  const { changeBackgroundColor, populateDescriptionList } = useStore();
 
   useEffect(() => {
     changeBackgroundColor('#000');
@@ -36,6 +36,17 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
     const searchResult = searchPlanet();
     setState(searchResult);
   }, [searchValue]);
+
+  useEffect(() => {
+    const descriptionList: IDescriptionList[] = [];
+    data.map(planet => {
+      descriptionList.push({
+        name: planet.id,
+        description: planet.description,
+      });
+    });
+    populateDescriptionList(descriptionList);
+  }, []);
 
   return (
     <>

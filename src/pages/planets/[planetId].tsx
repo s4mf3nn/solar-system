@@ -12,7 +12,7 @@ import { IGetPlanetDataQuery, IGetServerSidePlanetsProps, IPlanetData, IQuery } 
 export default function Planets({ data }: IPlanetData) {
   const router = useRouter();
   const [color, _] = useState<string>(bodySecondaryColors[data.id]);
-  const { changeBackgroundColor } = useStore();
+  const { changeBackgroundColor, descriptionList } = useStore();
 
   /**
    * Get the specific background color for the selected planet
@@ -27,6 +27,10 @@ export default function Planets({ data }: IPlanetData) {
     changeBackgroundColor(backgroundColor);
   }, []);
 
+  const getDescription = (): string => {
+    return descriptionList.filter(item => item.name === data.id).map(({ description }) => description || "")[0];
+  };
+
   /**
    * Format the value with a unit
    * @param value {number}
@@ -38,7 +42,7 @@ export default function Planets({ data }: IPlanetData) {
     if (!decimal) {
       return `${value.toLocaleString()} ${unit}`;
     }
-    return `${value.toFixed(decimal).toLocaleString()} ${unit}`;
+    return `${Math.abs(value).toFixed(decimal).toLocaleString()} ${unit}`;
   };
 
   /**
@@ -65,13 +69,13 @@ export default function Planets({ data }: IPlanetData) {
         <sc.Divider color={color} />
         <sc.Spacer size="1rem" />
         <Text color={color}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum.
+          {getDescription()}
         </Text>
         <sc.Spacer size="2rem" />
         {data.moons &&
           <>
             <sc.MoonContainer>
-              {data.moons.map(() => <sc.Moon color={color} />)}
+              {data.moons.map((_, index) => <sc.Moon key={index} color={color} />)}
             </sc.MoonContainer>
             <sc.Spacer size="1.5rem" />
           </>

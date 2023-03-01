@@ -91,5 +91,10 @@ export interface IGetAllPlanetsDataQuery {
   id: string;
   name: string;
   semimajorAxis: number;
-  description?: string;
+  description: string;
+}
+
+export interface IDescriptionList {
+  name: string;
+  description: string;
 }
