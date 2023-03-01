@@ -8,6 +8,7 @@ export default {
 
 const Template: ComponentStory<typeof Close> = (args) => <Close {...args} />;
 
-export const Overview = Template.bind({
-  color: "#fff"
-});
+export const Overview = Template.bind({});
+Overview.args = {
+  color: '#fff',
+};

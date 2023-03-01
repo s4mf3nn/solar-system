@@ -21,7 +21,6 @@ export default function Moons({ data, planetId }: any) {
   // Go to the previous page
   const handleClick = () => router.back();
 
-  console.log(data);
   return (
     <>
       <Head>
@@ -53,7 +52,7 @@ export default function Moons({ data, planetId }: any) {
               <Info
                 color={bodySecondaryColor}
                 title={moon.englishName}
-                subtitles={[`Distance from Mars : ${moon.semimajorAxis.toLocaleString()} km`, `Radius : ${moon.meanRadius.toLocaleString()} km`]}
+                subtitles={[`Distance from ${planetId} : ${moon.semimajorAxis.toLocaleString()} km`, `Radius : ${moon.meanRadius.toLocaleString()} km`]}
               />
             </sc.CardContainer>
           )}

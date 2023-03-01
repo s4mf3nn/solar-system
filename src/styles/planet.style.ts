@@ -2,18 +2,18 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   color: #fff;
-  padding: 30px 15px 30px;
+  padding: 30px 15px 50px;
 
   @media (min-width: 768px) and (max-width:  992px) {
-    padding: 50px 120px 0;
+    padding: 50px 120px 50px;
   }
 
   @media (min-width: 992px) and (max-width: 1300px) {
-    padding: 50px 180px 0;
+    padding: 50px 180px 50px;
   }
 
   @media (min-width: 1300px) {
-    padding: 50px 240px 0;
+    padding: 50px 240px 50px;
     width: 45%;
   }
 `;

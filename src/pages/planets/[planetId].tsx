@@ -37,9 +37,10 @@ export default function Planets({ data }: IPlanetData) {
    */
   const getInfo = (value: number, unit: string, decimal: number): string => {
     if (!decimal) {
-      return `${value.toLocaleString()} ${unit}`;
+      return `${value.toLocaleString('en-US')} ${unit}`;
     }
-    return `${Math.abs(value).toFixed(decimal).toLocaleString()} ${unit}`;
+    //@ts-ignore
+    return `${Math.abs(value).toFixed(decimal).toLocaleString('en-US')} ${unit}`;
   };
 
   /**
@@ -51,8 +52,8 @@ export default function Planets({ data }: IPlanetData) {
   return (
     <>
       <Head>
-        <title>Planet {data.name}</title>
-        <meta name="description" content={`Things about the planet ${data.name}`} />
+        <title>Planet {data.englishName}</title>
+        <meta name="description" content={`Things about the planet ${data.englishName}`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -61,7 +62,7 @@ export default function Planets({ data }: IPlanetData) {
           <Text color={color} bold={true}>Things to know about</Text>
           <Close color={color} handleClick={handleClick} />
         </sc.Header>
-        <Heading color={color} type="h1">{data.name}</Heading>
+        <Heading color={color} type="h1">{data.englishName}</Heading>
         <sc.Spacer size="1rem" />
         <sc.Divider color={color} />
         <sc.Spacer size="1rem" />
@@ -78,7 +79,7 @@ export default function Planets({ data }: IPlanetData) {
           </>
         }
         {data.moons &&
-          <Link href={`/planets/${data.name}/moons`}>
+          <Link href={`/planets/${data.englishName}/moons`}>
             <Button color={color} label={data.moons.length > 1
               ? `See the ${data.moons.length} moons`
               : "See the moon"
@@ -127,6 +128,13 @@ export default function Planets({ data }: IPlanetData) {
             color={color}
             title={getInfo(data.axialTilt, "°", 1)}
             subtitles={["Axial tilt"]}
+          />
+          <sc.Spacer size="1rem" />
+          <Info
+            color={color}
+            //@ts-ignore
+            title={data.population.toLocaleString('en-US')}
+            subtitles={["Population"]}
           />
         </sc.InfoContainer>
       </sc.Wrapper>

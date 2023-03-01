@@ -4,7 +4,7 @@ export interface ISolarSystemProps {
 
 export interface IPlanetProps {
   id: string;
-  name: string;
+  englishName: string;
   moons: IMoonsData[];
   semimajorAxis: number;
   gravity: number;
@@ -49,7 +49,7 @@ export interface IGetServerSideMoonsProps {
 export interface IPlanetData {
   data: {
     id: string;
-    name: string;
+    englishName: string;
     moons: IMoonsData[] | null;
     semimajorAxis: number;
     gravity: number;
@@ -58,6 +58,7 @@ export interface IPlanetData {
     sideralRotation: number;
     avgTemp: number;
     axialTilt: number;
+    population: string;
   };
 }
 
