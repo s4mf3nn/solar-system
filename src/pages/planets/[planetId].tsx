@@ -33,9 +33,6 @@ export default function Planets({ data }: IPlanetData) {
 
   /**
    * Format the value with a unit
-   * @param value {number}
-   * @param unit {string}
-   * @param decimal {number}
    * @returns {string}
    */
   const getInfo = (value: number, unit: string, decimal: number): string => {
@@ -47,7 +44,7 @@ export default function Planets({ data }: IPlanetData) {
 
   /**
    * Go to the previous page
-   * Back method has been replaced to prevent a bug
+   * NOTE: Back method has been replaced with push method to avoid a bug
    */
   const handleClick = () => router.push("/");
 
