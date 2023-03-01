@@ -48,12 +48,12 @@ export default function Moons({ data, planetId }: any) {
         </Heading>
         <sc.Spacer size="2.5rem" />
         <sc.Layout>
-          {data.map((moon: { name: string; }, i: number) =>
+          {data.map((moon: { meanRadius: number; semimajorAxis: number; name: string; }, i: number) =>
             <sc.CardContainer key={i}>
               <Info
                 color={bodySecondaryColor}
                 title={moon.name}
-                subtitles={["Distance from Mars : 9,378 km", "Radius : 11.1 km"]}
+                subtitles={[`Distance from Mars : ${moon.semimajorAxis.toLocaleString()} km`, `Radius : ${moon.meanRadius.toLocaleString()} km`]}
               />
             </sc.CardContainer>
           )}
