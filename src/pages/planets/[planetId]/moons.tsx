@@ -34,7 +34,7 @@ export default function Moons({ data, planetId }: any) {
           <Text color={bodySecondaryColor} bold={true}>
             {data.length > 1
               ? `Moons of ${planetId}`
-              : `Moon ${planetId}`
+              : `Moon of ${planetId}`
             }
           </Text>
           <Close color={bodySecondaryColor} handleClick={handleClick} />

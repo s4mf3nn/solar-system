@@ -39,8 +39,27 @@ export default function Planets({ data }: IPlanetData) {
     if (!decimal) {
       return `${value.toLocaleString('en-US')} ${unit}`;
     }
+
+    if (unit === 'yearDuration') {
+      if (Math.abs(value) <= 730) {
+        //@ts-ignore
+        return `${Math.abs(value).toFixed(decimal).toLocaleString('en-US')} days`;
+      }
+      //@ts-ignore
+      return `${Math.abs(value / 365).toFixed(decimal).toLocaleString('en-US')} years`;
+    }
+
+    if (unit === 'dayDuration') {
+      if (Math.abs(value) <= 48) {
+        //@ts-ignore
+        return `${Math.abs(value).toFixed(decimal).toLocaleString('en-US')} hours`;
+      }
+      //@ts-ignore
+      return `${Math.abs(value / 24).toFixed(decimal).toLocaleString('en-US')} days`;
+    }
+
     //@ts-ignore
-    return `${Math.abs(value).toFixed(decimal).toLocaleString('en-US')} ${unit}`;
+    return `${value.toFixed(decimal).toLocaleString('en-US')} ${unit}`;
   };
 
   /**
@@ -114,13 +133,13 @@ export default function Planets({ data }: IPlanetData) {
           <sc.Spacer size="1rem" />
           <Info
             color={color}
-            title={getInfo(data.sideralOrbit, "days", 1)}
+            title={getInfo(data.sideralOrbit, "yearDuration", 1)}
             subtitles={["One year duration"]}
           />
           <sc.Spacer size="1rem" />
           <Info
             color={color}
-            title={getInfo(data.sideralRotation, "hours", 2)}
+            title={getInfo(data.sideralRotation, "dayDuration", 2)}
             subtitles={["One day duration"]}
           />
           <sc.Spacer size="1rem" />

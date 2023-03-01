@@ -11,7 +11,7 @@ export const bodyPrimaryColor: any = {
 
 export const bodySecondaryColors: any = {
   mercure: "#1c1c1c",
-  venus: "#8c3f49",
+  venus: "#6a2f37",
   saturne: "#000",
   terre: "#1c2a35",
   mars: "#fff",
