@@ -5,7 +5,7 @@ import * as sc from './card.style';
 interface CardProps {
   id: string,
   name: string,
-  description: string,
+  description?: string,
   planetColor: string,
 }
 
@@ -17,7 +17,7 @@ export const Card: FC<CardProps> = ({ id, name, description, planetColor }) => {
         <sc.PlanetIcon color={planetColor} />
       </sc.Header>
       <sc.Spacer size=".5rem" />
-      <Text color="#fff" ellipsis={true} bold={false}>{description}</Text>
+      <Text color="#fff" ellipsis={true} bold={false}>{description!}</Text>
       <sc.Spacer size="1rem" />
       <Link to={`/planets/${id}`} label="See more" />
       <sc.Spacer size="1rem" />

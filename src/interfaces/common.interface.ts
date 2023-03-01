@@ -88,7 +88,8 @@ export interface IGetMoonsDataQuery {
 }
 
 export interface IGetAllPlanetsDataQuery {
-  id: string,
-  name: string,
-  description: string,
+  id: string;
+  name: string;
+  semimajorAxis: number;
+  description?: string;
 }

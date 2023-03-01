@@ -4,17 +4,18 @@ export const Wrapper = styled.div`
   background-color: #000;
   color: #fff;
   padding: 30px 15px 30px;
+  min-height: calc(100vh - 50px);
   
   @media (min-width: 768px) and (max-width:  992px) {
-    padding: 50px 120px 30px;
+    padding: 50px 120px 0;
   }
 
-  @media (min-width: 992px) and (max-width: 1200px) {
-    padding: 50px 180px 30px;
+  @media (min-width: 992px) and (max-width: 1300px) {
+    padding: 50px 180px 0;
   }
 
-  @media (min-width: 1200px) {
-    padding: 50px 240px 30px;
+  @media (min-width: 1300px) {
+    padding: 50px 240px 0;
   }
 `;
 

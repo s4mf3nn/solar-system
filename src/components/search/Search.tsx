@@ -3,9 +3,11 @@ import * as sc from './search.style';
 
 interface SearchProps {
   placeholder: string;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
 }
 
-export const Search: FC<SearchProps> = ({ placeholder }) => {
+export const Search: FC<SearchProps> = ({ placeholder, handleChange, value }) => {
   return (
     <>
       <sc.Icon />
@@ -13,6 +15,12 @@ export const Search: FC<SearchProps> = ({ placeholder }) => {
         type="text"
         name="search"
         placeholder={placeholder}
+        onChange={handleChange}
+        value={value}
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck="false"
       />
     </>
   );

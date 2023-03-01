@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import * as sc from './style';
+import * as sc from '../../styles/planet.style';
 
 import { getPlanet } from '@/api/getPlanet';
 import { IGetPlanetDataQuery, IGetServerSidePlanetsProps, IPlanetData, IQuery } from '@/interfaces/common.interface';
