@@ -78,7 +78,7 @@ export default function Planets({ data }: IPlanetData) {
           </>
         }
         {data.moons &&
-          <Link href={`/planets/${data.id}/moons`}>
+          <Link href={`/planets/${data.name}/moons`}>
             <Button color={color} label={data.moons.length > 1
               ? `See the ${data.moons.length} moons`
               : "See the moon"

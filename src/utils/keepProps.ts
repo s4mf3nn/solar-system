@@ -30,23 +30,3 @@ export const keepPlanetProps = (data: any): IPlanetProps => {
     avgTemp,
   };
 };
-
-/**
- * Return a smaller array of object that contains moons props
- * @param {any[]} data - list of complet moons props
- * @returns {IMoonsProps[]} - list of moons props to keep
- */
-// TODO
-export const keepMoonsProps = (data: any[]): IMoonsProps[] => {
-  const keysToKeep = [
-    "englishName",
-    "semimajorAxis",
-    "gravity",
-    "meanRadius",
-    "sideralOrbit",
-    "sideralRotation",
-    "avgTemp",
-  ];
-
-  return data;
-};

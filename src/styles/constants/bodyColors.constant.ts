@@ -7,7 +7,6 @@ export const bodyPrimaryColor: any = {
   saturne: "#fce5d8",
   uranus: "#91dbe9",
   neptune: "#7eb5f5",
-  moon: "#f7f6f6",
 };
 
 export const bodySecondaryColors: any = {
@@ -19,5 +18,4 @@ export const bodySecondaryColors: any = {
   jupiter: "#fff",
   uranus: "#fff",
   neptune: "#061d49",
-  moon: "#373737",
 };

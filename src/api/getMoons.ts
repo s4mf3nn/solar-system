@@ -1,4 +1,3 @@
-import { keepMoonsProps } from "@/utils/keepProps";
 import { IGetMoonsDataQuery } from '@/interfaces/common.interface';
 
 /**
@@ -24,7 +23,7 @@ export const getMoons = async (planetId: string): Promise<IGetMoonsDataQuery> =>
     notFound = true;
   }
 
-  const data = moonsData.length ? keepMoonsProps(moonsData) : [];
+  const data = moonsData.length ? moonsData : [];
 
   return { data, notFound };
 };

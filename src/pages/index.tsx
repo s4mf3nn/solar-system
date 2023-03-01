@@ -67,7 +67,7 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
             ? (state.map((planet, i) => (
               <sc.CardContainer key={i}>
                 <Card
-                  id={planet.id}
+                  id={planet.name}
                   name={planet.name}
                   description={planet.description}
                   planetColor={bodyPrimaryColor[planet.id]}
