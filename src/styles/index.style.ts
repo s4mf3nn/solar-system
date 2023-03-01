@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  background-color: #000;
   color: #fff;
   padding: 30px 15px 30px;
   min-height: calc(100vh - 50px);

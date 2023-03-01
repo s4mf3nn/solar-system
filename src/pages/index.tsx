@@ -7,10 +7,16 @@ import * as sc from '../styles/index.style';
 
 import { getAllPlanets } from '@/api/getAllPlanets';
 import { ISolarSystemProps, IGetAllPlanetsDataQuery, IGetStaticSolarSystemProps } from '@/interfaces/common.interface';
+import { useStore } from '@/store';
 
 export default function SolarSystem({ data }: ISolarSystemProps) {
   const [state, setState] = useState(data);
   const [searchValue, setSearchValue] = useState("");
+  const { changeBackgroundColor } = useStore();
+
+  useEffect(() => {
+    changeBackgroundColor('#000');
+  }, []);
 
   /**
    * Update the searchValue on searchInput change

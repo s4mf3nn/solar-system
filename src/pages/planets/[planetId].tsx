@@ -1,11 +1,23 @@
+import { useEffect } from 'react';
+import { useStore } from '@/store';
 import Head from 'next/head';
-import * as sc from '../../styles/planet.style';
-
 import { getPlanet } from '@/api/getPlanet';
-import { IGetPlanetDataQuery, IGetServerSidePlanetsProps, IPlanetData, IQuery } from '@/interfaces/common.interface';
 import Link from 'next/link';
+import * as sc from '@/styles/planet.style';
+import { IGetPlanetDataQuery, IGetServerSidePlanetsProps, IPlanetData, IQuery } from '@/interfaces/common.interface';
+import { bodyPrimaryColor } from '@/styles/bodyColors.constant';
 
 export default function Planets({ data }: IPlanetData) {
+  const { changeBackgroundColor } = useStore();
+
+  const getBackgroundColor = () => {
+    return bodyPrimaryColor[data.id];
+  };
+
+  useEffect(() => {
+    const backgroundColor = getBackgroundColor();
+    changeBackgroundColor(backgroundColor);
+  }, []);
 
   return (
     <>
@@ -37,5 +49,5 @@ export async function getServerSideProps(context: { query: IQuery; }): Promise<I
   // Return 404 page if no body was found
   if (notFound) return { notFound: true };
 
-  return { props: { data: data } };
+  return { props: { data } };
 }
