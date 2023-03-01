@@ -17,4 +17,5 @@ export const Spacer = styled.div <{ size: string; }> `
 
 export const Divider = styled.div<{ color: string; }>`
   border-top: 1px solid ${p => p.color};
+  opacity: .5;
 `;

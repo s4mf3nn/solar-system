@@ -8,7 +8,7 @@ import { IPlanetProps, IMoonsProps } from '@/interfaces/common.interface';
 export const keepPlanetProps = (data: any): IPlanetProps => {
   const {
     id,
-    englishName,
+    englishName: name,
     moons,
     semimajorAxis,
     gravity,
@@ -20,7 +20,7 @@ export const keepPlanetProps = (data: any): IPlanetProps => {
 
   return {
     id,
-    englishName,
+    name,
     moons,
     semimajorAxis,
     gravity,

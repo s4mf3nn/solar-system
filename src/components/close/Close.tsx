@@ -1,10 +1,15 @@
 import { FC } from "react";
 import * as sc from './close.style';
 
-export const Close: FC = () => {
+interface CloseProps {
+  color: string;
+  handleClick: () => void;
+}
+
+export const Close: FC<CloseProps> = ({ color, handleClick }) => {
   return (
-    <sc.Btn>
-      <sc.CloseIcon />
+    <sc.Btn onClick={handleClick} color={color}>
+      <sc.CloseIcon color={color} />
     </sc.Btn>
   );
 };

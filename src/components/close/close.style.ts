@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Btn = styled.button`
   align-items: center;
   background-color: transparent;
-  border: 1px solid #fff;
+  border: 1px solid ${p => p.color};
   border-radius: 36px;
   cursor: pointer;
   display: flex;
@@ -14,5 +14,5 @@ export const Btn = styled.button`
 `;
 
 export const CloseIcon = styled(X)`
-  color: #fff;
+  color: ${p => p.color};
 `;

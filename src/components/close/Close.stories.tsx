@@ -6,6 +6,8 @@ export default {
   component: Close,
 } as ComponentMeta<typeof Close>;
 
-const Template: ComponentStory<typeof Close> = () => <Close />;
+const Template: ComponentStory<typeof Close> = (args) => <Close {...args} />;
 
-export const Overview = Template.bind({});
+export const Overview = Template.bind({
+  color: "#fff"
+});

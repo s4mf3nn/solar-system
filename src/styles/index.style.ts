@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   color: #fff;
   padding: 30px 15px 30px;
-  min-height: calc(100vh - 50px);
   
   @media (min-width: 768px) and (max-width:  992px) {
     padding: 50px 120px 0;
