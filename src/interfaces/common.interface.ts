@@ -12,6 +12,7 @@ export interface IPlanetProps {
   sideralOrbit: number;
   sideralRotation: number;
   avgTemp: number;
+  axialTilt: number;
 }
 
 export interface IMoonsProps {
@@ -56,6 +57,7 @@ export interface IPlanetData {
     sideralOrbit: number;
     sideralRotation: number;
     avgTemp: number;
+    axialTilt: number;
   };
 }
 

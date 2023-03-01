@@ -101,6 +101,12 @@ export default function Planets({ data }: IPlanetData) {
           <sc.Spacer size="1rem" />
           <Info
             color={color}
+            title={getInfo((data.avgTemp - 273.15), "°C", 1)}
+            subtitles={["Average temperature"]}
+          />
+          <sc.Spacer size="1rem" />
+          <Info
+            color={color}
             title={getInfo(data.gravity, "m/s²", 1)}
             subtitles={["Gravity"]}
           />
@@ -115,6 +121,12 @@ export default function Planets({ data }: IPlanetData) {
             color={color}
             title={getInfo(data.sideralRotation, "hours", 2)}
             subtitles={["One day duration"]}
+          />
+          <sc.Spacer size="1rem" />
+          <Info
+            color={color}
+            title={getInfo(data.axialTilt, "°", 1)}
+            subtitles={["Axial tilt"]}
           />
         </sc.InfoContainer>
       </sc.Wrapper>

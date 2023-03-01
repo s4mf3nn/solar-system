@@ -16,6 +16,7 @@ export const keepPlanetProps = (data: any): IPlanetProps => {
     sideralOrbit,
     sideralRotation,
     avgTemp,
+    axialTilt,
   } = data;
 
   return {
@@ -28,5 +29,6 @@ export const keepPlanetProps = (data: any): IPlanetProps => {
     sideralOrbit,
     sideralRotation,
     avgTemp,
+    axialTilt,
   };
 };
