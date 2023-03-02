@@ -1,8 +1,9 @@
 import { AppProps } from 'next/app';
 import { Poppins } from '@next/font/google';
 import { useStore } from '@/store';
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
+import NextNProgress from 'nextjs-progressbar';
 import { Analytics } from '@vercel/analytics/react';
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
 
 interface CustomPageProps { }
 function MyApp({ Component, pageProps }: AppProps<CustomPageProps>) {
@@ -10,6 +11,7 @@ function MyApp({ Component, pageProps }: AppProps<CustomPageProps>) {
 
   return (
     <>
+      <NextNProgress color="#fff" />
       <div className={poppins.className}>
         <Component {...pageProps} />
         <Analytics />
