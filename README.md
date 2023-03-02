@@ -27,6 +27,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 npm run storybook
 ```
 
-To start Storybook:
 Open [http://localhost:6006](http://localhost:6006) with your browser to see the storybook app.
 **Note : The font doesn't load in Storybook. This will be fixed in a future pull request.**
