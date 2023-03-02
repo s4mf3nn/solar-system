@@ -5,17 +5,15 @@ import Head from 'next/head';
 import { Close, Heading, Info, Text } from '@/components';
 import { getMoons } from '@/api/getMoons';
 import * as sc from '@/styles/moons.style';
+import { commonColors } from '@/styles/constants/colors.constant';
 import { IGetServerSideMoonsProps } from '@/interfaces/common.interface';
-
-const bodyPrimaryColor = "#f7f6f6";
-const bodySecondaryColor = "#373737";
 
 export default function Moons({ data, planetId }: any) {
   const router = useRouter();
   const { changeBackgroundColor } = useStore();
 
   useEffect(() => {
-    changeBackgroundColor(bodyPrimaryColor);
+    changeBackgroundColor(commonColors.moonPageBackground);
   }, []);
 
   // Go to the previous page
@@ -31,15 +29,15 @@ export default function Moons({ data, planetId }: any) {
       </Head>
       <sc.Wrapper>
         <sc.Header>
-          <Text color={bodySecondaryColor} bold={true}>
+          <Text color={commonColors.moonPageText} bold={true}>
             {data.length > 1
               ? `Moons of ${planetId}`
               : `Moon of ${planetId}`
             }
           </Text>
-          <Close color={bodySecondaryColor} handleClick={handleClick} />
+          <Close color={commonColors.moonPageText} handleClick={handleClick} />
         </sc.Header>
-        <Heading color={bodySecondaryColor} type="h1">
+        <Heading color={commonColors.moonPageText} type="h1">
           {data.length > 1
             ? `${data.length} moons`
             : "1 moon"
@@ -50,7 +48,7 @@ export default function Moons({ data, planetId }: any) {
           {data.map((moon: { meanRadius: number; semimajorAxis: number; englishName: string; }, i: number) =>
             <sc.CardContainer key={i}>
               <Info
-                color={bodySecondaryColor}
+                color={commonColors.moonPageText}
                 title={moon.englishName}
                 subtitles={[`Distance from ${planetId} : ${moon.semimajorAxis.toLocaleString()} km`, `Radius : ${moon.meanRadius.toLocaleString()} km`]}
               />

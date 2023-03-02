@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  color: #fff;
   padding: 30px 15px 50px;
 
   @media (min-width: 768px) and (max-width:  992px) {
@@ -43,6 +42,7 @@ export const MoonContainer = styled.div`
   flex-wrap: wrap;
   gap: 4px;
 `;
+
 export const Moon = styled.div`
   width: 20px;
   height: 20px;

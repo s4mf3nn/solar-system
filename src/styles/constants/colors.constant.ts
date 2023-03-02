@@ -19,3 +19,13 @@ export const bodySecondaryColors: any = {
   uranus: "#00365c",
   neptune: "#061d49",
 };
+
+export const commonColors: any = {
+  notFoundBackground: "#000",
+  notFoundText: "#fff",
+  loadingProgress: "#fff",
+  homePageBackground: "#000",
+  homePageText: "#fff",
+  moonPageBackground: "#f7f6f6",
+  moonPageText: "#373737",
+};

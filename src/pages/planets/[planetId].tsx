@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { getPlanet } from '@/api/getPlanet';
 import { Button, Close, Heading, Info, Text } from '@/components';
 import * as sc from '@/styles/planet.style';
-import { bodyPrimaryColor, bodySecondaryColors } from '@/styles/constants/bodyColors.constant';
+import { bodyPrimaryColor, bodySecondaryColors } from '@/styles/constants/colors.constant';
 import { IGetPlanetDataQuery, IGetServerSidePlanetsProps, IPlanetData, IQuery } from '@/interfaces/common.interface';
 
 export default function Planets({ data }: IPlanetData) {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useStore } from '@/store';
 import { Card, Heading, Search, Text } from '@/components';
-import { bodyPrimaryColor } from '@/styles/constants/bodyColors.constant';
+import { bodyPrimaryColor, commonColors } from '@/styles/constants/colors.constant';
 import * as sc from '@/styles/index.style';
 
 import { getAllPlanets } from '@/api/getAllPlanets';
@@ -14,7 +14,7 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
   const { changeBackgroundColor, populateDescriptionList } = useStore();
 
   useEffect(() => {
-    changeBackgroundColor('#000');
+    changeBackgroundColor(commonColors.homePageBackground);
   }, []);
 
   /**
@@ -57,8 +57,8 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <sc.Wrapper>
-        <Text color="#fff" bold={true}>Solar System</Text>
-        <Heading color="#fff" type="h1">Discover</Heading>
+        <Text color={commonColors.homePageText} bold={true}>Solar System</Text>
+        <Heading color={commonColors.homePageText} type="h1">Discover</Heading>
         <sc.Spacer size="2.5rem" />
         <Search placeholder="Search for a planet" handleChange={handleChange} value={searchValue} />
         <sc.Spacer size="2.5rem" />
@@ -74,7 +74,7 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
                 />
               </sc.CardContainer>
             )))
-            : (<Text color="#fff" bold={false}>No planet found</Text>)
+            : (<Text color={commonColors.homePageText} bold={false}>No planet found</Text>)
           }
         </sc.Layout>
       </sc.Wrapper>
