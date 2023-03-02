@@ -63,8 +63,7 @@ export default function Planets({ data }: IPlanetData) {
   };
 
   /**
-   * Go to the previous page
-   * NOTE: Back method has been replaced with push method to avoid a bug
+   * Go to the main page
    */
   const handleClick = () => router.push("/");
 

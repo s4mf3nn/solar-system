@@ -8,7 +8,7 @@ interface CloseProps {
 
 export const Close: FC<CloseProps> = ({ color, handleClick }) => {
   return (
-    <sc.Btn onClick={handleClick} color={color}>
+    <sc.Btn onClick={handleClick} color={color} aria-label="Close">
       <sc.CloseIcon color={color} />
     </sc.Btn>
   );

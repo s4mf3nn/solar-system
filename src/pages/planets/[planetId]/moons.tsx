@@ -19,7 +19,7 @@ export default function Moons({ data, planetId }: any) {
   }, []);
 
   // Go to the previous page
-  const handleClick = () => router.back();
+  const handleClick = () => router.push(`/planets/${planetId}`);
 
   return (
     <>

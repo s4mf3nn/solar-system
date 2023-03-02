@@ -14,9 +14,7 @@ function MyApp({ Component, pageProps }: AppProps<CustomPageProps>) {
         <Component {...pageProps} />
         <Analytics />
       </div>
-      <style jsx global>{`
-        body { background: ${backgroundColor}; }
-      `}</style>
+      <style jsx global>{`body { background: ${backgroundColor}; }`}</style>
     </>
   );
 }

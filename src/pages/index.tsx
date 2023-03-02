@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
+import { useStore } from '@/store';
 import { Card, Heading, Search, Text } from '@/components';
 import { bodyPrimaryColor } from '@/styles/constants/bodyColors.constant';
 import * as sc from '@/styles/index.style';
 
 import { getAllPlanets } from '@/api/getAllPlanets';
 import { ISolarSystemProps, IGetAllPlanetsDataQuery, IGetStaticSolarSystemProps, IDescriptionList } from '@/interfaces/common.interface';
-import { useStore } from '@/store';
 
 export default function SolarSystem({ data }: ISolarSystemProps) {
   const [state, setState] = useState(data);
@@ -53,7 +53,7 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
       <Head>
         <title>Explore Solar System</title>
         <meta name="description" content="Explore planets and moons of Solar System" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <sc.Wrapper>
@@ -78,11 +78,6 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
           }
         </sc.Layout>
       </sc.Wrapper>
-      <style jsx global>{`
-        body {
-          background: "red";
-        }
-      `}</style>
     </>
   );
 }
