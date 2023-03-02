@@ -4,7 +4,7 @@ export const Text = styled.text<{ color: string; ellipsis?: boolean; bold: boole
   color: ${p => p.color};
   font-size: .8rem;
   font-weight: ${p => p.bold ? '700' : '400'};
-  opacity: .85;
+  opacity: .8;
   overflow: ${p => p.ellipsis ? 'hidden' : 'none'};
   text-overflow: ${p => p.ellipsis ? 'ellipsis' : 'none'};
   display: ${p => p.ellipsis ? '-webkit-box' : ''};

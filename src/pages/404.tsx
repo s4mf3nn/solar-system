@@ -19,6 +19,7 @@ export default function FourOhFour() {
         <title>404 - Not found</title>
         <meta name="description" content={"404 - Not found"} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <sc.Wrapper>
