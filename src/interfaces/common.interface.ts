@@ -94,10 +94,12 @@ export interface IGetAllPlanetsDataQuery {
   id: string;
   name: string;
   semimajorAxis: number;
-  description: string;
+  englishDescription: string;
+  frenchDescription: string;
 }
 
 export interface IDescriptionList {
   name: string;
-  description: string;
+  englishDescription: string,
+  frenchDescription: string,
 }

@@ -13,12 +13,12 @@ export const getAllPlanets = async (): Promise<IGetAllPlanetsDataQuery[] | undef
     const planetsData: IGetAllPlanetsDataQuery[] = [];
 
     await Promise.all(data.bodies.map(async (planet: any) => {
-      const description = await generateDescription(planet.englishName);
       planetsData.push({
         id: planet.id,
         name: planet.englishName,
         semimajorAxis: planet.semimajorAxis,
-        description: description || "",
+        englishDescription: await generateDescription('english', planet.englishName) || "",
+        frenchDescription: await generateDescription('french', planet.englishName) || "",
       });
     }));
 
