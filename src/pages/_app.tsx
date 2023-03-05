@@ -1,11 +1,11 @@
-import { AppProps } from 'next/app';
-import { Poppins } from '@next/font/google';
-import { useStore } from '@/store';
 import NextNProgress from 'nextjs-progressbar';
-import { Analytics } from '@vercel/analytics/react';
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
-import { commonColors } from '@/styles/constants/colors.constant';
 import { appWithTranslation } from 'next-i18next';
+import { Poppins } from '@next/font/google';
+import { AppProps } from 'next/app';
+import { useStore } from '@/store';
+import { Analytics } from '@vercel/analytics/react';
+import { commonColors } from '@/styles/constants/colors.constant';
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
 
 interface CustomPageProps { }
 function MyApp({ Component, pageProps }: AppProps<CustomPageProps>) {

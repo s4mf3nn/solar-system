@@ -13,8 +13,8 @@ const openai = new OpenAIApi(configuration);
 export const generateDescription = async (language: 'english' | 'french', planet: string): Promise<string | undefined> => {
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `Give me a short description in ${language} of planet ${planet} in about 300 characters.`,
-    max_tokens: 300
+    prompt: `Give me a short description in ${language} of planet ${planet} in about 360 characters.`,
+    max_tokens: 500
   });
 
   return completion.data.choices[0].text;

@@ -14,7 +14,7 @@ import * as sc from '@/styles/index.style';
 export default function SolarSystem({ data }: ISolarSystemProps) {
   const { t, i18n } = useTranslation('common');
   const [state, setState] = useState(data);
-  const [language, setLanguage] = useState('fr');
+  const [language, setLanguage] = useState<string | undefined>(undefined);
   const [searchValue, setSearchValue] = useState('');
   const { changeBackgroundColor, populateDescriptionList } = useStore();
 
@@ -29,7 +29,12 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
     return data.filter(planet => planet.name.toLowerCase().includes(searchValue.toLowerCase().trim()));
   };
 
-  const toggleLanguage = () => language === 'fr' ? setLanguage('en') : setLanguage('fr');
+  // Toggle the app language
+  const toggleLanguage = () => i18n.language === 'en' ? setLanguage('fr') : setLanguage('en');
+
+  useEffect(() => {
+    i18n.language === 'en' ? setLanguage('fr') : setLanguage('en');
+  }, [i18n.language]);
 
   useEffect(() => {
     const searchResult = searchPlanet();
@@ -58,12 +63,12 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
       </Head>
       <sc.Wrapper>
         <sc.Header>
-          <Text color={commonColors.homePageText} bold={true}>{t('homeTitle')}</Text>
+          <Text color={commonColors.homePageText} bold={true}>{t('homeSubTitle')}</Text>
           <Link href={"/"} locale={language} onClick={toggleLanguage}>
             <Image alt="switch language" src="/switch-language.png" width="26" height="26" />
           </Link>
         </sc.Header>
-        <Heading color={commonColors.homePageText} type="h1">{t('homeMainTitle')}</Heading>
+        <Heading color={commonColors.homePageText} type="h1">{t('homeTitle')}</Heading>
         <sc.Spacer size="2.5rem" />
         <Search placeholder={t('searchPlaceholder')} handleChange={handleChange} value={searchValue} />
         <sc.Spacer size="2.5rem" />
@@ -76,6 +81,7 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
                   name={i18n.language === "en" ? planet.name : planet.id}
                   description={i18n.language === "en" ? planet.englishDescription : planet.frenchDescription}
                   planetColor={bodyPrimaryColor[planet.id]}
+                  callToAction={t('seeMore')}
                 />
               </sc.CardContainer>
             )))
@@ -89,6 +95,7 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
 
 export async function getStaticProps({ locale }: any): Promise<IGetStaticSolarSystemProps> {
   const data: IGetAllPlanetsDataQuery[] | undefined = await getAllPlanets();
+
   return {
     props: {
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),

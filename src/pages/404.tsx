@@ -26,12 +26,12 @@ export default function FourOhFour() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <sc.Wrapper>
-        <Heading type="h1" color={commonColors.notFoundText}>{t('404Title')}</Heading>
+        <Heading type="h1" color={commonColors.notFoundText}>{t('notFoundTitle')}</Heading>
         <sc.Spacer size="2rem" />
-        <Text color={commonColors.notFoundText}>{t('404Content')}</Text>
+        <Text color={commonColors.notFoundText}>{t('notFoundContent')}</Text>
         <sc.Spacer size="1.5rem" />
         <Link href={"/"}>
-          <Button color={commonColors.notFoundText} label={t('404Button')} />
+          <Button color={commonColors.notFoundText} label={t('goBackHome')} />
         </Link>
       </sc.Wrapper>
     </>

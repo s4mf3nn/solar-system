@@ -17,10 +17,8 @@ export const getAllPlanets = async (): Promise<IGetAllPlanetsDataQuery[] | undef
         id: planet.id,
         name: planet.englishName,
         semimajorAxis: planet.semimajorAxis,
-        englishDescription: "English description",
-        frenchDescription: "Description en Français",
-        // englishDescription: await generateDescription('english', planet.englishName) || "",
-        // frenchDescription: await generateDescription('french', planet.englishName) || "",
+        englishDescription: await generateDescription('english', planet.englishName) || "",
+        frenchDescription: await generateDescription('french', planet.englishName) || "",
       });
     }));
 
