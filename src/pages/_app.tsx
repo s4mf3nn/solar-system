@@ -5,6 +5,7 @@ import NextNProgress from 'nextjs-progressbar';
 import { Analytics } from '@vercel/analytics/react';
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
 import { commonColors } from '@/styles/constants/colors.constant';
+import { appWithTranslation } from 'next-i18next';
 
 interface CustomPageProps { }
 function MyApp({ Component, pageProps }: AppProps<CustomPageProps>) {
@@ -22,4 +23,4 @@ function MyApp({ Component, pageProps }: AppProps<CustomPageProps>) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

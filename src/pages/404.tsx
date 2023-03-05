@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 import Head from 'next/head';
 import { Button, Heading, Text } from '@/components';
@@ -7,6 +9,7 @@ import { commonColors } from '@/styles/constants/colors.constant';
 import * as sc from '@/styles/404.style';
 
 export default function FourOhFour() {
+  const { t } = useTranslation('common');
   const { changeBackgroundColor } = useStore();
 
   useEffect(() => {
@@ -23,14 +26,22 @@ export default function FourOhFour() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <sc.Wrapper>
-        <Heading type="h1" color={commonColors.notFoundText}>404</Heading>
+        <Heading type="h1" color={commonColors.notFoundText}>{t('404Title')}</Heading>
         <sc.Spacer size="2rem" />
-        <Text color={commonColors.notFoundText}>Your journey through our website has taken you to a place where time and space converge, and the laws of physics break down. You may have stumbled into a digital black hole, where our 404 not found page has been pulled into the abyss. We recommend retracing your steps back to a safer, more stable part of the site.</Text>
+        <Text color={commonColors.notFoundText}>{t('404Content')}</Text>
         <sc.Spacer size="1.5rem" />
         <Link href={"/"}>
-          <Button color={commonColors.notFoundText} label="Try to escape" />
+          <Button color={commonColors.notFoundText} label={t('404Button')} />
         </Link>
       </sc.Wrapper>
     </>
   );
+};
+
+export async function getStaticProps({ locale }: any): Promise<any> {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+    }
+  };
 };

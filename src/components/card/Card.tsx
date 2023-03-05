@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { ArrowRight } from 'react-feather';
 import { Heading, Text } from '../index';
+import { useTranslation } from 'next-i18next';
 import * as sc from './card.style';
 
 interface CardProps {
@@ -11,10 +12,12 @@ interface CardProps {
 }
 
 export const Card: FC<CardProps> = ({ id, name, description, planetColor }) => {
+  const { t } = useTranslation('common');
+
   return (
     <sc.Wrapper href={`/planets/${id}`}>
       <sc.Header>
-        <Heading type="h2" color="#fff">{name}</Heading>
+        <Heading type="h2" color="#fff" capitalize>{name}</Heading>
         <sc.PlanetIcon color={planetColor} />
       </sc.Header>
       <sc.Spacer size=".5rem" />

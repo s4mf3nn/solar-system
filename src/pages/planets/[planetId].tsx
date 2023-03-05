@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useStore } from '@/store';
 import Link from 'next/link';
 import Head from 'next/head';
@@ -11,30 +12,33 @@ import { IGetPlanetDataQuery, IGetServerSidePlanetsProps, IPlanetData, IQuery } 
 
 export default function Planets({ data }: IPlanetData) {
   const router = useRouter();
+  const { t } = useTranslation('common');
   const [color, _] = useState<string>(bodySecondaryColors[data.id]);
   const { changeBackgroundColor, descriptionList } = useStore();
-
-  /**
-   * Get the specific background color for the selected planet
-   * @returns {string} - backgroundColor
-   */
-  const getBackgroundColor = (): string => {
-    return bodyPrimaryColor[data.id];
-  };
 
   useEffect(() => {
     const backgroundColor = getBackgroundColor();
     changeBackgroundColor(backgroundColor);
   }, []);
 
-  const getDescription = (): string => {
-    return descriptionList.filter(item => item.name === data.id).map(({ description }) => description || "")[0];
+  // Get the specific background color for the selected planet
+  const getBackgroundColor = (): string => {
+    return bodyPrimaryColor[data.id];
   };
 
-  /**
-   * Format the value with a unit
-   * @returns {string}
-   */
+  // Get the planet description from the store in the selected language
+  const getDescription = (): string => {
+
+    // TODO Stocker et récupérer dans le store la langue sélectionnée)
+
+    return descriptionList
+      .filter(item => item.name === data.id)
+      .map(({ englishDescription, frenchDescription }) => 'en' === 'en'
+        ? englishDescription
+        : frenchDescription || "")[0];
+  };
+
+  // Format the value with a unit
   const getInfo = (value: number, unit: string, decimal: number): string => {
     if (!decimal) {
       return `${value.toLocaleString('en-US')} ${unit}`;
@@ -62,9 +66,7 @@ export default function Planets({ data }: IPlanetData) {
     return `${value.toFixed(decimal).toLocaleString('en-US')} ${unit}`;
   };
 
-  /**
-   * Go to the main page
-   */
+  // Go to the main page
   const handleClick = () => router.push("/");
 
   return (
@@ -80,7 +82,7 @@ export default function Planets({ data }: IPlanetData) {
           <Text color={color} bold={true}>Things to know about</Text>
           <Close color={color} handleClick={handleClick} />
         </sc.Header>
-        <Heading color={color} type="h1">{data.englishName}</Heading>
+        <Heading color={color} type="h1" capitalize>{'en' === "en" ? data.englishName : data.id}</Heading>
         <sc.Spacer size="1rem" />
         <sc.Divider color={color} />
         <sc.Spacer size="1rem" />
