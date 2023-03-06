@@ -9,7 +9,8 @@ interface IState {
 
 interface IDescriptionList {
   name: string;
-  description: string;
+  englishDescription: string;
+  frenchDescription: string;
 }
 
 export const useStore = create<IState>()((set) => ({

@@ -38,14 +38,6 @@ export interface IGetServerSidePlanetsProps {
   };
 }
 
-export interface IGetServerSideMoonsProps {
-  notFound?: boolean;
-  props?: {
-    data: IMoonsProps[];
-    planetId: string;
-  };
-}
-
 export interface IPlanetData {
   data: {
     id: string;
@@ -94,10 +86,12 @@ export interface IGetAllPlanetsDataQuery {
   id: string;
   name: string;
   semimajorAxis: number;
-  description: string;
+  englishDescription: string;
+  frenchDescription: string;
 }
 
 export interface IDescriptionList {
   name: string;
-  description: string;
+  englishDescription: string,
+  frenchDescription: string,
 }

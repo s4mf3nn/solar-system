@@ -20,6 +20,7 @@ export const Header = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
+  margin-bottom: -15px;
 `;
 
 export const Layout = styled.div`

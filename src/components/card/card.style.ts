@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(Link)`
+text-decoration: none;
 `;
 
 export const Header = styled.div`
@@ -23,4 +25,14 @@ export const Spacer = styled.div<{ size: string; }>`
 export const Divider = styled.div<{ color: string; }>`
   border-top: 1px solid ${p => p.color};
   opacity: .4;
+`;
+
+export const SeeMore = styled.p`
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  gap: .5rem;
+  margin: 0;
+  text-decoration: none;
 `;

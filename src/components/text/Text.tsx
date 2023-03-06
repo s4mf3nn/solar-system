@@ -5,11 +5,12 @@ interface TextProps {
   color: string;
   bold?: boolean;
   ellipsis?: boolean;
+  paragraph?: boolean;
   children: string;
 }
 
-export const Text: FC<TextProps> = ({ color, bold, ellipsis, children }) => {
+export const Text: FC<TextProps> = ({ color, bold, ellipsis, paragraph, children }) => {
   return (
-    <sc.Text color={color} ellipsis={ellipsis} bold={bold || false}>{children}</sc.Text>
+    <sc.Text color={color} ellipsis={ellipsis} paragraph={paragraph} bold={bold || false}>{children}</sc.Text>
   );
 };
