@@ -23,6 +23,9 @@
   "moonTitle_one": "{{ count }} moon",
   "moonTitle_other": "{{ count }} moons",
   "distFrom": "Distance from ",
+  "hours": "hours",
+  "days": "days",
+  "years": "years",
   "notFoundTitle": "404",
   "notFoundContent": "We're sorry, the content you are looking for cannot be found. It seems that the page has been swallowed up in a black hole, a region of space-time where gravity is so strong that nothing, not even light, can escape.",
   "goBackHome": "Go back to Earth"

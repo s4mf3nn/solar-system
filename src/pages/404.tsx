@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Link from 'next/link';
-import Head from 'next/head';
 import { Button, Heading, Text } from '@/components';
 import { useStore } from '@/store';
-import { commonColors } from '@/styles/constants/colors.constant';
 import * as sc from '@/styles/404.style';
+import { commonColors } from '@/styles/constants/colors.constant';
+import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useEffect } from 'react';
 
 export default function FourOhFour() {
   const { t } = useTranslation('common');
@@ -38,10 +39,10 @@ export default function FourOhFour() {
   );
 };
 
-export async function getStaticProps({ locale }: any): Promise<any> {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(ctx.locale as string, ['common'])),
     }
   };
 };

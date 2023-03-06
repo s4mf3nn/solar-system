@@ -1,25 +1,30 @@
-import Link from 'next/link';
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'react-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useStore } from '@/store';
 import { getPlanet } from '@/api/getPlanet';
 import { Button, Close, Heading, Info, Text } from '@/components';
-import * as sc from '@/styles/planet.style';
+import { IGetPlanetDataQuery, IPlanetData } from '@/interfaces/common.interface';
+import { useStore } from '@/store';
 import { bodyPrimaryColor, bodySecondaryColors } from '@/styles/constants/colors.constant';
-import { IGetPlanetDataQuery, IGetServerSidePlanetsProps, IPlanetData, IQuery } from '@/interfaces/common.interface';
+import * as sc from '@/styles/planet.style';
+import { capitalize } from '@/utils/capitalize';
+import { translatePlanetName } from '@/utils/translatePlanetName';
+import { GetServerSideProps } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export default function Planets({ data }: IPlanetData) {
   const router = useRouter();
   const { t, i18n } = useTranslation('common');
   const [color, _] = useState<string>(bodySecondaryColors[data.id]);
+  const [planetName, setPlanetName] = useState<string>('');
   const { changeBackgroundColor, descriptionList } = useStore();
 
+  // Set the planet name and the background color
   useEffect(() => {
-    const backgroundColor = getBackgroundColor();
-    changeBackgroundColor(backgroundColor);
+    changeBackgroundColor(getBackgroundColor());
+    setPlanetName(translatePlanetName(i18n.language, data.englishName, data.id));
   }, []);
 
   // Get the specific background color for the selected planet
@@ -37,7 +42,7 @@ export default function Planets({ data }: IPlanetData) {
         : frenchDescription)[0];
   };
 
-  // Format the value with a unit
+  // Format the info value with a unit
   const getInfo = (value: number, unit: string, decimal: number): string => {
     if (!decimal) {
       return `${value.toLocaleString('en-US')} ${unit}`;
@@ -46,19 +51,19 @@ export default function Planets({ data }: IPlanetData) {
     if (unit === 'yearDuration') {
       if (Math.abs(value) <= 730) {
         //@ts-ignore
-        return `${Math.abs(value).toFixed(decimal).toLocaleString('en-US')} days`;
+        return `${Math.abs(value).toFixed(decimal).toLocaleString('en-US')} ${t('days')}`;
       }
       //@ts-ignore
-      return `${Math.abs(value / 365).toFixed(decimal).toLocaleString('en-US')} years`;
+      return `${Math.abs(value / 365).toFixed(decimal).toLocaleString('en-US')} ${t('years')}`;
     }
 
     if (unit === 'dayDuration') {
       if (Math.abs(value) <= 48) {
         //@ts-ignore
-        return `${Math.abs(value).toFixed(decimal).toLocaleString('en-US')} hours`;
+        return `${Math.abs(value).toFixed(decimal).toLocaleString('en-US')} ${t('hours')}`;
       }
       //@ts-ignore
-      return `${Math.abs(value / 24).toFixed(decimal).toLocaleString('en-US')} days`;
+      return `${Math.abs(value / 24).toFixed(decimal).toLocaleString('en-US')} ${t('days')}`;
     }
 
     //@ts-ignore
@@ -67,18 +72,6 @@ export default function Planets({ data }: IPlanetData) {
 
   // Go to the main page
   const handleClick = () => router.push("/");
-
-  // Get the translated planet name
-  const planetName = i18n.language === "en"
-    ? data.englishName
-    : data.id === "terre"
-      ? "La Terre"
-      : data.id;
-
-  // Capitalize a string
-  const capitalize = (string: string): string => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
 
   return (
     <>
@@ -97,7 +90,7 @@ export default function Planets({ data }: IPlanetData) {
         <sc.Spacer size="1rem" />
         <sc.Divider color={color} />
         <sc.Spacer size="1rem" />
-        <Text color={color}>
+        <Text color={color} paragraph>
           {getDescription()}
         </Text>
         <sc.Spacer size="2rem" />
@@ -173,17 +166,17 @@ export default function Planets({ data }: IPlanetData) {
   );
 }
 
-export async function getServerSideProps(context: { query: { planetId: string; }; locale: string; }): Promise<IGetServerSidePlanetsProps> {
-  const { planetId } = context.query;
-  const { data, notFound }: IGetPlanetDataQuery = await getPlanet(planetId);
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { planetId } = ctx.query;
+  const { data, notFound }: IGetPlanetDataQuery = await getPlanet(planetId as string);
 
   // Return 404 page if no body was found
   if (notFound) return { notFound: true };
 
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ['common'])),
+      ...(await serverSideTranslations(ctx.locale as string, ['common'])),
       data
     }
   };
-}
+};

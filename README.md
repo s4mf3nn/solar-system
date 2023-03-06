@@ -8,12 +8,12 @@ Additionally, through [OpenAI](https://openai.com/), it provide you with detaile
 
 ## Google Lighthouse Score
 
-Performance: **100**
-Accessibility: **100**
-Best Practices: **100**
-SEO: **100**
+- Performance: **100**
+- Accessibility: **100**
+- Best Practices: **100**
+- SEO: **100**
 
-# Links
+## Links
 
 Link to the online  Solar System App:
 https://solar-system-theta.vercel.app/

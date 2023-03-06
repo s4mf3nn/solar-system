@@ -23,6 +23,9 @@
   "moonTitle_one": "{{ count }} lune",
   "moonTitle_other": "{{ count }} lunes",
   "distFrom": "Distance de ",
+  "hours": "heures",
+  "days": "jours",
+  "years": "ans",
   "notFoundTitle": "404",
   "notFoundContent": "Nous sommes désolés, le contenu que vous recherchez est introuvable. Il semblerait que la page ait été aspirée par un trou noir, une région de l'espace-temps où la gravité est si forte que rien, pas même la lumière, ne peut s'en échapper.",
   "goBackHome": "Retourner sur terre"

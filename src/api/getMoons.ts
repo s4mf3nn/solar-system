@@ -1,10 +1,6 @@
 import { IGetMoonsDataQuery } from '@/interfaces/common.interface';
 
-/**
- * Get moons data of a specific planet by ID
- * @param {string} planetId  - planet ID
- * @returns {IGetMoonsDataQuery} - planet data
- */
+// Get moons data of a specific planet by ID
 export const getMoons = async (planetId: string): Promise<IGetMoonsDataQuery> => {
   const response = await fetch(`https://api.le-systeme-solaire.net/rest/bodies/${planetId}`);
 

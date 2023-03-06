@@ -1,21 +1,22 @@
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
-import Link from "next/link";
-import Image from 'next/image';
-import { useStore } from '@/store';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
-import { Card, Heading, Search, Text } from '@/components';
 import { getAllPlanets } from '@/api/getAllPlanets';
-import { ISolarSystemProps, IGetAllPlanetsDataQuery, IGetStaticSolarSystemProps, IDescriptionList } from '@/interfaces/common.interface';
+import { Card, Heading, Search, Text } from '@/components';
+import { IDescriptionList, IGetAllPlanetsDataQuery, ISolarSystemProps } from '@/interfaces/common.interface';
+import { useStore } from '@/store';
 import { bodyPrimaryColor, commonColors } from '@/styles/constants/colors.constant';
 import * as sc from '@/styles/index.style';
+import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from "next/link";
+import { useEffect, useState } from 'react';
 
 export default function SolarSystem({ data }: ISolarSystemProps) {
   const { t, i18n } = useTranslation('common');
   const [state, setState] = useState(data);
   const [language, setLanguage] = useState<string | undefined>(undefined);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState<string>('');
   const { changeBackgroundColor, populateDescriptionList } = useStore();
 
   // Update background color on page load
@@ -27,6 +28,7 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
   // Toggle the app language
   const toggleLanguage = () => i18n.language === 'en' ? setLanguage('fr') : setLanguage('en');
 
+  // Set the app language
   useEffect(() => {
     i18n.language === 'en' ? setLanguage('fr') : setLanguage('en');
   }, [i18n.language]);
@@ -40,6 +42,7 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
     setState(searchResult);
   }, [searchValue]);
 
+  // Store the description of each planet
   useEffect(() => {
     const descriptionList: IDescriptionList[] = [];
     data.map(planet => {
@@ -49,6 +52,7 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
         frenchDescription: planet.frenchDescription,
       });
     });
+
     populateDescriptionList(descriptionList);
   }, []);
 
@@ -64,7 +68,7 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
         <sc.Header>
           <Text color={commonColors.homePageText} bold={true}>{t('homeSubTitle')}</Text>
           <Link href={"/"} locale={language} onClick={toggleLanguage}>
-            <Image alt="switch language" src="/switch-language.webp" width="26" height="26" />
+            <Image alt="switch language" src="/language.svg" width="26" height="26" />
           </Link>
         </sc.Header>
         <Heading color={commonColors.homePageText} type="h1">{t('homeTitle')}</Heading>
@@ -92,12 +96,12 @@ export default function SolarSystem({ data }: ISolarSystemProps) {
   );
 }
 
-export async function getStaticProps({ locale }: any): Promise<IGetStaticSolarSystemProps> {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   const data: IGetAllPlanetsDataQuery[] | undefined = await getAllPlanets();
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(ctx.locale as string, ['common'])),
       data
     }
   };

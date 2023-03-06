@@ -1,10 +1,10 @@
-import NextNProgress from 'nextjs-progressbar';
-import { appWithTranslation } from 'next-i18next';
-import { Poppins } from '@next/font/google';
-import { AppProps } from 'next/app';
 import { useStore } from '@/store';
-import { Analytics } from '@vercel/analytics/react';
 import { commonColors } from '@/styles/constants/colors.constant';
+import { Poppins } from '@next/font/google';
+import { Analytics } from '@vercel/analytics/react';
+import { appWithTranslation } from 'next-i18next';
+import { AppProps } from 'next/app';
+import NextNProgress from 'nextjs-progressbar';
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
 
 interface CustomPageProps { }

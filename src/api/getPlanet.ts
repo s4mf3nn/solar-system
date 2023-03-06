@@ -1,11 +1,8 @@
 import { IGetPlanetDataQuery } from "@/interfaces/common.interface";
 
 const RAPID_API_SK = process.env.RAPID_API_SK;
-/**
- * Get data of a specific planet by ID
- * @param {string} planetId  - planet ID
- * @returns {IGetPlanetDataQuery} - planet data
- */
+
+// Get data of a specific planet by ID
 export const getPlanet = async (planetId: string): Promise<IGetPlanetDataQuery> => {
   const response = await fetch(`https://api.le-systeme-solaire.net/rest/bodies/${planetId}`);
   let population = 0;
